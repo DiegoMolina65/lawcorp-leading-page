@@ -1,12 +1,11 @@
-import fundador1 from '../assets/images/fundador1.jpg'
-import fundador2 from '../assets/images/fundador2.jpg'
-import fundador3 from '../assets/images/fundador3.jpg'
+import fundador1 from '../assets/images/YohanaMontana.jpg'
+import fundador2 from '../assets/images/Grecia.jpg'
 
 interface Socio {
   nombre: string
   cargo: string
   descripcion: string
-  foto: string 
+  foto: string
 }
 
 const socios: Socio[] = [
@@ -24,13 +23,6 @@ const socios: Socio[] = [
     descripcion:
       'Abogada egresada de la Universidad San Francisco Xavier de Chuquisaca (USFXCH) en 2011, con 11 años de experiencia en la Aduana Nacional de Bolivia. Especialista en Derecho Aduanero, Tributario, Administrativo y Constitucional. Experta en Fiscalización Aduanera y Fraude Tributario. Reconocida por su excelencia en desempeño, criterio técnico, ética profesional y orientación a resultados.',
   },
-  {
-    nombre: 'Winter Rómulo Hinojosa Téllez',
-    cargo: 'Socio Fundador',
-    foto: fundador3,
-    descripcion:
-      'Socio Fundador de LawCorp con amplia trayectoria en el ámbito jurídico. Su perfil profesional completo estará disponible próximamente.',
-  },
 ]
 
 function SocioRow({ socio, index, isLast }: { socio: Socio; index: number; isLast: boolean }) {
@@ -38,40 +30,44 @@ function SocioRow({ socio, index, isLast }: { socio: Socio; index: number; isLas
 
   return (
     <>
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: '5rem',
-        flexDirection: isEven ? 'row' : 'row-reverse',
-        padding: '3.5rem 0',
-      }} className="socio-row">
-
-        {/* ── Foto ── */}
-        <div style={{
-          flexShrink: 0,
+      <div
+        className="socio-row"
+        style={{
           display: 'flex',
-          flexDirection: 'column',
           alignItems: 'center',
-          gap: '1rem',
-          width: '240px',
-        }} className="socio-foto-col">
-
-          <div style={{ position: 'relative', width: '190px', height: '190px' }}>
+          gap: '3.5rem',                  // ← antes 5rem
+          flexDirection: isEven ? 'row' : 'row-reverse',
+          padding: '2.5rem 0',            // ← antes 3.5rem
+        }}
+      >
+        {/* ── Foto ── */}
+        <div
+          className="socio-foto-col"
+          style={{
+            flexShrink: 0,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '0.75rem',               // ← antes 1rem
+            width: '210px',               // ← antes 240px
+          }}
+        >
+          <div style={{ position: 'relative', width: '170px', height: '170px' }}> {/* ← antes 190px */}
             {/* Anillo exterior punteado */}
             <div style={{
-              position: 'absolute', inset: '-12px',
+              position: 'absolute', inset: '-10px',
               borderRadius: '50%',
               border: '1.5px dashed rgba(212,175,55,0.2)',
             }} />
             {/* Anillo dorado */}
             <div style={{
-              position: 'absolute', inset: '-5px',
+              position: 'absolute', inset: '-4px',
               borderRadius: '50%',
               border: '2px solid rgba(212,175,55,0.45)',
             }} />
             {/* Foto */}
             <div style={{
-              width: '190px', height: '190px',
+              width: '170px', height: '170px',
               borderRadius: '50%', overflow: 'hidden',
               border: '3px solid #D4AF37',
               boxShadow: '0 8px 32px rgba(11,61,145,0.2), 0 0 0 6px rgba(212,175,55,0.07)',
@@ -96,14 +92,14 @@ function SocioRow({ socio, index, isLast }: { socio: Socio; index: number; isLas
 
             {/* Badge número */}
             <div style={{
-              position: 'absolute', bottom: '6px',
-              [isEven ? 'right' : 'left']: '6px',
+              position: 'absolute', bottom: '4px',
+              [isEven ? 'right' : 'left']: '4px',
               zIndex: 2,
-              width: '34px', height: '34px', borderRadius: '50%',
+              width: '30px', height: '30px', borderRadius: '50%',
               background: 'linear-gradient(135deg, #D4AF37, #b8962e)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               fontFamily: '"Montserrat", sans-serif', fontWeight: 800,
-              fontSize: '12px', color: '#071f4a',
+              fontSize: '11px', color: '#071f4a',
               boxShadow: '0 2px 8px rgba(212,175,55,0.4)',
             }}>
               {String(index + 1).padStart(2, '0')}
@@ -113,7 +109,7 @@ function SocioRow({ socio, index, isLast }: { socio: Socio; index: number; isLas
           {/* Cargo */}
           <span style={{
             display: 'inline-block',
-            padding: '4px 16px', borderRadius: '20px',
+            padding: '4px 14px', borderRadius: '20px',
             backgroundColor: 'rgba(11,61,145,0.07)',
             border: '1px solid rgba(11,61,145,0.13)',
             fontFamily: '"Montserrat", sans-serif', fontWeight: 600,
@@ -125,11 +121,14 @@ function SocioRow({ socio, index, isLast }: { socio: Socio; index: number; isLas
         </div>
 
         {/* ── Línea conectora ── */}
-        <div style={{
-          width: '1px', alignSelf: 'stretch',
-          background: 'linear-gradient(180deg, transparent, rgba(212,175,55,0.35) 20%, rgba(212,175,55,0.35) 80%, transparent)',
-          flexShrink: 0,
-        }} className="socio-linea" />
+        <div
+          className="socio-linea"
+          style={{
+            width: '1px', alignSelf: 'stretch',
+            background: 'linear-gradient(180deg, transparent, rgba(212,175,55,0.35) 20%, rgba(212,175,55,0.35) 80%, transparent)',
+            flexShrink: 0,
+          }}
+        />
 
         {/* ── Contenido ── */}
         <div style={{ flex: 1, minWidth: 0 }}>
@@ -138,30 +137,30 @@ function SocioRow({ socio, index, isLast }: { socio: Socio; index: number; isLas
           <span style={{
             display: 'block',
             fontFamily: '"Montserrat", sans-serif', fontWeight: 900,
-            fontSize: '72px', lineHeight: 1,
+            fontSize: '60px', lineHeight: 1,       // ← antes 72px
             color: 'rgba(11,61,145,0.05)',
-            marginBottom: '-0.6rem',
+            marginBottom: '-0.5rem',               // ← menos overlap
             letterSpacing: '-4px',
             userSelect: 'none',
           }}>0{index + 1}</span>
 
           <h3 style={{
             fontFamily: '"Montserrat", sans-serif', fontWeight: 800,
-            fontSize: 'clamp(1.2rem, 2vw, 1.5rem)',
-            color: '#0B3D91', margin: '0 0 0.75rem', lineHeight: 1.2,
+            fontSize: 'clamp(1.1rem, 2vw, 1.35rem)', // ← ligeramente menor
+            color: '#0B3D91', margin: '0 0 0.5rem', lineHeight: 1.2,
           }}>
             {socio.nombre}
           </h3>
 
           <div style={{
-            width: '40px', height: '3px',
+            width: '36px', height: '3px',
             background: 'linear-gradient(90deg, #D4AF37, rgba(212,175,55,0.2))',
-            borderRadius: '2px', marginBottom: '1rem',
+            borderRadius: '2px', marginBottom: '0.75rem', // ← antes 1rem
           }} />
 
           <p style={{
             fontFamily: '"Open Sans", sans-serif', fontWeight: 400,
-            fontSize: '0.9rem', lineHeight: 1.85,
+            fontSize: '0.88rem', lineHeight: 1.75,  // ← antes 1.85
             color: '#5C5C5C', margin: 0,
             maxWidth: '560px',
           }}>
@@ -177,18 +176,19 @@ function SocioRow({ socio, index, isLast }: { socio: Socio; index: number; isLas
           alignItems: 'center',
           gap: '1rem',
           padding: '0 1rem',
+          margin: '0.25rem 0',            // ← pequeño margen vertical
         }}>
           <div style={{
             flex: 1, height: '1px',
             background: 'linear-gradient(90deg, transparent, rgba(11,61,145,0.12) 20%, rgba(11,61,145,0.12) 80%, transparent)',
           }} />
           <div style={{
-            width: '28px', height: '28px', borderRadius: '50%', flexShrink: 0,
+            width: '24px', height: '24px', borderRadius: '50%', flexShrink: 0, // ← antes 28px
             border: '1.5px solid rgba(212,175,55,0.35)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
           }}>
             <div style={{
-              width: '6px', height: '6px', borderRadius: '50%',
+              width: '5px', height: '5px', borderRadius: '50%',
               backgroundColor: '#D4AF37',
             }} />
           </div>
@@ -207,8 +207,8 @@ function QuienesSomos() {
     <section
       id="quienes-somos"
       style={{
-        paddingTop: '7rem',
-        paddingBottom: '4rem',
+        paddingTop: '5rem',              // ← antes 7rem
+        paddingBottom: '3rem',           // ← antes 4rem
         position: 'relative',
         overflow: 'hidden',
         background: `
@@ -240,35 +240,33 @@ function QuienesSomos() {
         border: '1px solid rgba(212,175,55,0.07)', pointerEvents: 'none',
       }} />
 
-      {/* Usamos maxWidth más amplio para aprovechar el espacio */}
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 3rem', position: 'relative', zIndex: 1 }}>
+      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 2.5rem', position: 'relative', zIndex: 1 }}>
 
         {/* Encabezado */}
-        <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+        <div style={{ textAlign: 'center', marginBottom: '2rem' }}> {/* ← antes 3rem */}
           <span style={{
             fontFamily: '"Montserrat", sans-serif', fontWeight: 600,
             fontSize: '11px', letterSpacing: '4px', textTransform: 'uppercase',
-            color: '#D4AF37', display: 'block', marginBottom: '0.75rem',
+            color: '#D4AF37', display: 'block', marginBottom: '0.6rem',
           }}>Nuestro Equipo</span>
           <h2 style={{
             fontFamily: '"Montserrat", sans-serif', fontWeight: 800,
             fontSize: 'clamp(1.75rem, 4vw, 2.75rem)',
-            color: '#0B3D91', margin: '0 0 1rem', lineHeight: 1.2,
+            color: '#0B3D91', margin: '0 0 0.75rem', lineHeight: 1.2,
           }}>Quiénes Somos</h2>
           <div style={{
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            gap: '10px', marginBottom: '1.25rem',
+            gap: '10px', marginBottom: '1rem',          // ← antes 1.25rem
           }}>
             <div style={{ width: '48px', height: '2px', background: 'linear-gradient(90deg, transparent, #D4AF37)' }} />
             <div style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#D4AF37' }} />
             <div style={{ width: '48px', height: '2px', background: 'linear-gradient(90deg, #D4AF37, transparent)' }} />
           </div>
           <p style={{
-            fontFamily: '"Open Sans", sans-serif', fontSize: '1rem',
-            color: '#5C5C5C', maxWidth: '500px', margin: '0 auto', lineHeight: 1.75,
+            fontFamily: '"Open Sans", sans-serif', fontSize: '0.95rem', // ← antes 1rem
+            color: '#5C5C5C', maxWidth: '540px', margin: '0 auto', lineHeight: 1.7,
           }}>
-            Somos una firma jurídica especializada, comprometida con la defensa
-            de sus derechos e intereses con excelencia técnica y ética profesional.
+            Somos una firma jurídica especializada conformada por abogados con amplia trayectoria profesional, sólida formación académica y experiencia comprobada en el asesoramiento y patrocinio legal tanto a personas naturales como a empresas nacionales e internacionales. Nuestra práctica se caracteriza por un enfoque estratégico, técnico y preventivo, orientado a la protección de los intereses de nuestros clientes y a la generación de soluciones legales eficaces y sostenibles.
           </p>
         </div>
 

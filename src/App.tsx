@@ -1,6 +1,6 @@
 import './App.css'
 import Contactanos from './components/Contactanos'
-import Incio from './components/Incio'
+import Incio from './components/Inicio'
 import QuienesSomos from './components/QuienesSomos'
 import Servicios from './components/Servicios'
 import Navegacion from './components/Navegacion'

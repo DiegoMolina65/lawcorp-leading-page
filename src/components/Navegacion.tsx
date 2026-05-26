@@ -4,10 +4,13 @@ import logotipo from '../assets/images/ISOLOGOLAWCORPDORADO.png'
 const navLinks = [
   { label: 'Inicio',        href: '#inicio' },
   { label: 'Quiénes Somos', href: '#quienes-somos' },
-  { label: 'Servicios',     href: '#servicios' },
-  { label: 'Equipo',        href: '#equipo' },
-  { label: 'Contacto',      href: '#contacto' },
+  { label: 'Servicios',      href: '#servicios' },
+  { label: 'Contacto',       href: '#contacto' },
 ]
+
+const WHATSAPP_NUMBER = '59171091917' 
+const WHATSAPP_MESSAGE = encodeURIComponent('Hola, me comunico desde la página web de LawCorp y quisiera obtener más información sobre sus servicios.')
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`
 
 function Navegacion() {
   const [scrolled, setScrolled]   = useState(false)
@@ -17,7 +20,33 @@ function Navegacion() {
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30)
     window.addEventListener('scroll', onScroll)
-    return () => window.removeEventListener('scroll', onScroll)
+
+    const observerOptions = {
+      root: null, 
+      rootMargin: '-50% 0px -50% 0px', 
+      threshold: 0,
+    }
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveLink(`#${entry.target.id}`)
+        }
+      })
+    }
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions)
+
+    navLinks.forEach((link) => {
+      const id = link.href.replace('#', '')
+      const element = document.getElementById(id)
+      if (element) observer.observe(element)
+    })
+
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      observer.disconnect()
+    }
   }, [])
 
   const handleNavClick = (href: string) => {
@@ -30,7 +59,6 @@ function Navegacion() {
       <header style={{
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000,
         transition: 'all 0.4s ease',
-        // Scrolled: azul profundo con textura, no plano
         backgroundColor: scrolled
           ? 'rgba(6, 20, 52, 0.97)'
           : 'transparent',
@@ -40,7 +68,6 @@ function Navegacion() {
           : 'none',
       }}>
 
-        {/* Línea dorada decorativa superior — solo al hacer scroll */}
         {scrolled && (
           <div style={{
             position: 'absolute', top: 0, left: 0, right: 0,
@@ -68,7 +95,7 @@ function Navegacion() {
               src={logotipo}
               alt="LawCorp"
               style={{
-                height: scrolled ? '90px' : '90px',
+                height: '90px',
                 width: 'auto',
                 objectFit: 'contain',
                 transition: 'height 0.4s ease',
@@ -132,9 +159,11 @@ function Navegacion() {
               )
             })}
 
-            {/* ── CTA Consulta Gratuita ── */}
+            {/* ── CTA Consulta Gratuita (Actualizado a WhatsApp) ── */}
             <a
-              href="mailto:CONSULTAS@LAWCORP.COM"
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               style={{
                 marginLeft: '16px',
                 padding: '11px 24px',
@@ -145,7 +174,6 @@ function Navegacion() {
                 fontSize: '12.5px',
                 letterSpacing: '0.4px',
                 whiteSpace: 'nowrap',
-                // Gradiente dorado con brillo
                 background: 'linear-gradient(135deg, #D4AF37 0%, #e8c84a 50%, #c9a42e 100%)',
                 color: '#071f4a',
                 boxShadow: '0 4px 16px rgba(212,175,55,0.35), inset 0 1px 0 rgba(255,255,255,0.25)',
@@ -195,7 +223,7 @@ function Navegacion() {
             {[0, 1, 2].map((i) => (
               <span key={i} style={{
                 display: 'block',
-                width: i === 1 ? '14px' : '20px',  // línea central más corta = estética
+                width: i === 1 ? '14px' : '20px',
                 height: '2px',
                 backgroundColor: '#D4AF37',
                 borderRadius: '2px',
@@ -254,8 +282,11 @@ function Navegacion() {
               </a>
             ))}
 
+            {/* ── CTA Móvil (Actualizado a WhatsApp) ── */}
             <a
-              href="mailto:CONSULTAS@LAWCORP.COM"
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               style={{
                 marginTop: '1rem',
                 padding: '13px 20px',

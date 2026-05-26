@@ -1,13 +1,9 @@
 import { useState, useEffect } from 'react'
+import { Scale, Globe, Briefcase, FileText, Users, ShieldAlert } from 'lucide-react'
 
-// ─────────────────────────────────────────────────────────────
-// ✏️  EDITA AQUÍ cuando tengas la información real
-// Reemplaza cada valor de "icono" con la ruta a tu imagen:
-// Ejemplo: icono: '/src/assets/iconos/aduanero.png'
-// ─────────────────────────────────────────────────────────────
 interface Servicio {
   id: number
-  icono: string       // ruta de la imagen del ícono
+  icono: any
   titulo: string
   resumen: string
   descripcion: string
@@ -17,80 +13,139 @@ interface Servicio {
 const servicios: Servicio[] = [
   {
     id: 1,
-    icono: '',        // ← reemplaza con: '/src/assets/iconos/aduanero.png'
-    titulo: 'Derecho Aduanero',
-    resumen: 'Asesoría y defensa integral en procesos aduaneros administrativos y judiciales.',
+    icono: Scale,
+    titulo: 'Derecho Tributario',
+    resumen: 'Planificación, análisis y defensa tributaria para que su empresa opere con pleno cumplimiento legal.',
     descripcion:
-      'Representamos a operadores de comercio internacional ante la Aduana Nacional en todas las instancias del proceso: recursos de alzada, jerárquicos y constitucionales. Nuestro equipo cuenta con experiencia comprobada en fiscalizaciones, valoraciones aduaneras, clasificación arancelaria y regímenes aduaneros especiales. [Reemplaza este texto con la descripción real del servicio].',
-    areas: ['Recursos de Alzada', 'Fiscalización Aduanera', 'Valoración Arancelaria'],
+      'El asesoramiento en esta materia está enfocado a la planificación, análisis y aplicación de tributos con la finalidad que nuestros clientes realicen todas sus operaciones cumpliendo el ordenamiento jurídico vigente. Este servicio consiste en realizar una evaluación diagnóstica, diseño de estrategias y resolución de consultas de acuerdo a la problemática presentada. Contamos con un equipo de abogados con especialización en materia tributaria, preparados para atender operaciones altamente complejas.',
+    areas: [
+      'Asesoramiento',
+      'Auditorías Preventivas',
+      'Acompañamiento en Fiscalizaciones',
+      'Litigio y Controversias Administrativas',
+      'Reestructuración Empresarial',
+      'Política Tributaria',
+    ],
   },
   {
     id: 2,
-    icono: '',        // ← reemplaza con: '/src/assets/iconos/tributario.png'
-    titulo: 'Derecho Tributario',
-    resumen: 'Defensa y planificación en materia fiscal frente a la administración tributaria.',
+    icono: Globe,
+    titulo: 'Comercio Exterior y Derecho Aduanero',
+    resumen: 'Servicios multidisciplinarios especializados en comercio exterior para prevenir fiscalizaciones y brindar defensa legal efectiva.',
     descripcion:
-      'Brindamos asesoría en procedimientos de fiscalización, determinación de deuda tributaria, impugnación de resoluciones administrativas y representación en procesos contenciosos tributarios. [Reemplaza este texto con la descripción real del servicio].',
-    areas: ['Fiscalización Tributaria', 'Contencioso Tributario', 'Planificación Fiscal'],
+      'Nuestros servicios legales multidisciplinarios y especializados en el área de comercio exterior se encuentran enfocados en prevenir fiscalizaciones y brindar defensa legal efectiva en el ámbito tributario aduanero. Este servicio consiste en realizar una evaluación diagnóstica, diseño de estrategias y resolución de consultas de acuerdo a las operaciones de comercio exterior. Contamos con un equipo de abogados con especialización en materia aduanera, preparados para atender operaciones altamente complejas.',
+    areas: [
+      'Diagnóstico y Consultoría Preventiva',
+      'Asesoramiento en Comercio Exterior',
+      'Prevención de Fiscalizaciones',
+      'Auditoría de Cumplimiento',
+      'Asesoría en Regímenes',
+      'Certificaciones',
+      'Patrocinio y Defensa Legal',
+    ],
   },
   {
     id: 3,
-    icono: '',        // ← reemplaza con: '/src/assets/iconos/constitucional.png'
-    titulo: 'Derecho Constitucional',
-    resumen: 'Interposición y defensa en acciones constitucionales para proteger sus derechos.',
+    icono: Briefcase,
+    titulo: 'Derecho Corporativo y Comercial',
+    resumen: 'Asesoría integral en contratación, estructuración legal del negocio y operaciones de comercio nacional e internacional.',
     descripcion:
-      'Especializados en la interposición de Acciones de Amparo Constitucional, Acciones de Libertad y otros recursos constitucionales. Hemos liderado más de 32 amparos con resultados positivos para nuestros clientes. [Reemplaza este texto con la descripción real del servicio].',
-    areas: ['Amparo Constitucional', 'Acción de Libertad', 'Tutela de Derechos'],
+      'En materia corporativa, el asesoramiento comprende las áreas de contratación nacional e internacional, documentos comerciales, diseño legal del negocio, comercio internacional y otras vinculadas con el desenvolvimiento del negocio. Brindamos apoyo para el análisis, diseño de estrategias, revisión de documentos, absolución de consultas, elaboración de informes, contratos y otros documentos legales, que serán el soporte sólido para la ejecución de las operaciones de su empresa; contemplando el patrocinio de procesos administrativos, judiciales o arbitrales.',
+    areas: [
+      'Diseño Legal del Negocio',
+      'Redacción y Revisión de Contratos',
+      'Reestructuración Empresarial',
+      'Constitución de Sociedades',
+      'Gobierno Corporativo',
+      'Operaciones de Financiamiento y Títulos Valores',
+      'Contratación Estatal',
+      'Negociación, Arbitrajes y Litigios',
+    ],
   },
   {
     id: 4,
-    icono: '',        // ← reemplaza con: '/src/assets/iconos/empresarial.png'
-    titulo: 'Derecho Empresarial',
-    resumen: 'Asesoría jurídica integral para empresas en sus operaciones y contratos.',
+    icono: FileText,
+    titulo: 'Derecho Administrativo y Regulatorio',
+    resumen: 'Gestión y defensa de personas y empresas ante la Administración Pública en procesos regulatorios y sancionadores.',
     descripcion:
-      'Apoyamos a empresas en la estructuración de contratos comerciales, constitución de sociedades, fusiones, adquisiciones y gestión de riesgos legales. Ofrecemos acompañamiento jurídico permanente. [Reemplaza este texto con la descripción real del servicio].',
-    areas: ['Contratos Comerciales', 'Constitución de Empresas', 'Asesoría Corporativa'],
+      'Brindamos asesoramiento para el cumplimiento de obligaciones administrativas y regulatorias correspondientes, asesoría, gestión y defensa de personas y empresas ante la Administración Pública. Gestionamos la obtención de licencias, autorizaciones, permisos y registros ante entidades públicas, ministerios y municipios, y ofrecemos defensa ante multas o sanciones impuestas por organismos de control.',
+    areas: [
+      'Gestión Regulatoria',
+      'Procedimiento Administrativo',
+      'Impugnación de Actos Administrativos',
+      'Asesoría en Sectores Regulados',
+      'Licitaciones y Contratación Pública',
+      'Procedimientos Sancionadores',
+    ],
   },
   {
     id: 5,
-    icono: '',        // ← reemplaza con: '/src/assets/iconos/consultoria.png'
-    titulo: 'Consultoría Jurídica',
-    resumen: 'Análisis y opinión legal especializada para la toma de decisiones estratégicas.',
+    icono: Users,
+    titulo: 'Derecho Civil',
+    resumen: 'Asesoría y patrocinio en toda clase de procedimientos civiles, desde contratos hasta sucesiones y responsabilidad civil.',
     descripcion:
-      'Emitimos informes y opiniones jurídicas fundamentadas en áreas de Derecho Aduanero, Tributario, Administrativo y Empresarial, orientados a identificar riesgos y brindar soluciones concretas. [Reemplaza este texto con la descripción real del servicio].',
-    areas: ['Opiniones Legales', 'Análisis de Riesgo', 'Due Diligence'],
+      'Brindamos asesoramiento en todo tipo de procedimientos civiles, desde la redacción de contratos, procesos de sucesión y división de herencias, hasta la gestión de procesos en materia de responsabilidad civil. Nuestro estudio jurídico cuenta con amplia experiencia en el régimen de propiedad horizontal y puede ofrecer asesoría especializada en conflictos entre copropietarios, distribución de gastos, innovaciones y aplicación del reglamento; además de recuperación de cartera en mora.',
+    areas: [
+      'Redacción Estratégica de Contratos',
+      'Constitución de Fundaciones, Asociaciones y ONGs',
+      'Patrocinio en Procesos Civiles',
+      'Adquisiciones',
+      'Sucesiones Hereditarias',
+      'Derechos Reales',
+      'Recuperación de Carteras en Mora',
+      'Régimen de Propiedad Horizontal',
+    ],
+  },
+  {
+    id: 6,
+    icono: ShieldAlert,
+    titulo: 'Derecho Penal',
+    resumen: 'Defensa penal especializada en delitos tributarios, aduaneros y económicos con enfoque estratégico.',
+    descripcion:
+      'Nuestra firma ofrece defensa penal especializada con énfasis en delitos de naturaleza tributaria, aduanera y económica. Representamos a personas naturales y jurídicas en todas las etapas del proceso penal, desde la etapa preparatoria hasta la impugnación de sentencias, garantizando una defensa técnica rigurosa y orientada a resultados.',
+    areas: [
+      'Defensa Penal Tributaria',
+      'Defensa Penal Aduanera',
+      'Delitos Económicos',
+      'Etapa Preparatoria',
+      'Juicio Oral',
+      'Impugnación de Sentencias',
+    ],
   },
 ]
-// ─────────────────────────────────────────────────────────────
 
-// Ícono placeholder hasta que lleguen las imágenes reales
-function IconoPlaceholder({ label }: { label: string }) {
-  const inicial = label.charAt(0).toUpperCase()
+function IconoServicio({ icono: Icono, titulo, size = 32, dorado = false }: {
+  icono: any; titulo: string; size?: number; dorado?: boolean
+}) {
+  const inicial = titulo.charAt(0).toUpperCase()
+  const colorIcono = dorado ? '#D4AF37' : 'rgba(255, 255, 255, 0.9)'
+  const colorFondo = dorado ? 'rgba(212, 175, 55, 0.08)' : 'rgba(255, 255, 255, 0.05)'
+  const colorBorde = dorado ? 'rgba(212, 175, 55, 0.3)' : 'rgba(255, 255, 255, 0.12)'
+
   return (
     <div style={{
-      width: '100%', height: '100%',
-      display: 'flex', alignItems: 'center', justifyContent: 'center',
-      fontFamily: '"Montserrat", sans-serif', fontWeight: 800,
-      fontSize: '20px', color: '#D4AF37',
+      width: `${size + 28}px`,
+      height: `${size + 28}px`,
+      borderRadius: '14px',          
+      flexShrink: 0,
+      border: `1px solid ${colorBorde}`,
+      backgroundColor: colorFondo,    
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      transition: 'all 0.3s ease',
     }}>
-      {inicial}
-    </div>
-  )
-}
-
-function IconoServicio({ src, titulo, size = 54, dorado = false }: { src: string; titulo: string; size?: number; dorado?: boolean }) {
-  return (
-    <div style={{
-      width: `${size}px`, height: `${size}px`, borderRadius: '50%', flexShrink: 0,
-      border: `1.5px solid ${dorado ? 'rgba(212,175,55,0.5)' : 'rgba(11,61,145,0.15)'}`,
-      background: dorado ? 'rgba(212,175,55,0.1)' : 'rgba(11,61,145,0.06)',
-      display: 'flex', alignItems: 'center', justifyContent: 'center',
-      overflow: 'hidden',
-    }}>
-      {src ? (
-        <img src={src} alt={titulo} style={{ width: '55%', height: '55%', objectFit: 'contain' }} />
+      {Icono ? (
+        <Icono size={size} strokeWidth={1.5} color={colorIcono} />
       ) : (
-        <IconoPlaceholder label={titulo} />
+        <span style={{
+          fontFamily: '"Montserrat", sans-serif',
+          fontWeight: 800,
+          fontSize: `${size * 0.4}px`,
+          color: colorIcono,
+        }}>
+          {inicial}
+        </span>
       )}
     </div>
   )
@@ -127,7 +182,6 @@ function Modal({ servicio, onClose }: { servicio: Servicio; onClose: () => void 
         animation: 'slideUp 0.3s ease',
         boxShadow: '0 32px 80px rgba(7,31,74,0.45)',
       }}>
-        {/* Header azul */}
         <div style={{
           background: 'linear-gradient(135deg, #071f4a 0%, #0B3D91 100%)',
           padding: '2rem', position: 'relative', flexShrink: 0,
@@ -161,8 +215,8 @@ function Modal({ servicio, onClose }: { servicio: Servicio; onClose: () => void 
             }}
           >✕</button>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', paddingRight: '2.5rem', position: 'relative', zIndex: 1 }}>
-            <IconoServicio src={servicio.icono} titulo={servicio.titulo} size={60} dorado />
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', paddingRight: '2.5rem', position: 'relative', zIndex: 1 }}>
+            <IconoServicio icono={servicio.icono} titulo={servicio.titulo} size={42} dorado />
             <div>
               <p style={{
                 fontFamily: '"Montserrat", sans-serif', fontWeight: 600,
@@ -183,7 +237,6 @@ function Modal({ servicio, onClose }: { servicio: Servicio; onClose: () => void 
           }} />
         </div>
 
-        {/* Cuerpo blanco */}
         <div style={{ backgroundColor: '#FFFFFF', padding: '2rem', overflowY: 'auto', flex: 1 }}>
           <p style={{
             fontFamily: '"Open Sans", sans-serif',
@@ -196,7 +249,7 @@ function Modal({ servicio, onClose }: { servicio: Servicio; onClose: () => void 
             fontSize: '10px', letterSpacing: '2.5px', textTransform: 'uppercase',
             color: '#0B3D91', margin: '0 0 0.75rem',
           }}>Áreas que cubre</p>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '2rem' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
             {servicio.areas.map((area) => (
               <span key={area} style={{
                 fontFamily: '"Montserrat", sans-serif', fontWeight: 600,
@@ -207,33 +260,6 @@ function Modal({ servicio, onClose }: { servicio: Servicio; onClose: () => void 
               }}>{area}</span>
             ))}
           </div>
-
-          <a href="#contacto" onClick={onClose} style={{
-            display: 'inline-flex', alignItems: 'center', gap: '8px',
-            padding: '13px 28px', borderRadius: '8px',
-            background: 'linear-gradient(135deg, #0B3D91, #071f4a)',
-            color: '#FFFFFF',
-            fontFamily: '"Montserrat", sans-serif', fontWeight: 700,
-            fontSize: '13px', textDecoration: 'none',
-            transition: 'all 0.2s ease',
-            boxShadow: '0 4px 16px rgba(11,61,145,0.3)',
-          }}
-            onMouseEnter={(e) => {
-              const el = e.currentTarget as HTMLElement
-              el.style.transform = 'translateY(-2px)'
-              el.style.boxShadow = '0 8px 24px rgba(11,61,145,0.4)'
-            }}
-            onMouseLeave={(e) => {
-              const el = e.currentTarget as HTMLElement
-              el.style.transform = 'translateY(0)'
-              el.style.boxShadow = '0 4px 16px rgba(11,61,145,0.3)'
-            }}
-          >
-            Consultar sobre este servicio
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <path d="M3 7H11M7.5 3.5L11 7L7.5 10.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </a>
         </div>
       </div>
 
@@ -253,8 +279,6 @@ function Servicios() {
 
   return (
     <section id="servicios" style={{ position: 'relative' }}>
-
-      {/* ── Ola superior: transición suave desde blanco (#FFFFFF de QuienesSomos) hacia azul ── */}
       <div style={{ lineHeight: 0, backgroundColor: '#F5F7FB' }}>
         <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"
           style={{ display: 'block', width: '100%', height: '80px' }}>
@@ -262,13 +286,11 @@ function Servicios() {
         </svg>
       </div>
 
-      {/* ── Cuerpo principal de la sección ── */}
       <div style={{
-        background: 'linear-gradient(160deg, #071f4a 0%, #0B3D91 55%, #0d2f6b 100%)',
-        padding: '4rem 0 6rem',
+        background: 'linear-gradient(180deg, #071f4a 0%, #0B3D91 38%, #071f4a 68%, #040e24 100%)',
+        padding: '4rem 0 8rem',
         position: 'relative', overflow: 'hidden',
       }}>
-        {/* Patrón de puntos */}
         <div style={{
           position: 'absolute', inset: 0, pointerEvents: 'none',
           backgroundImage: 'radial-gradient(circle, rgba(212,175,55,0.07) 1px, transparent 1px)',
@@ -277,12 +299,11 @@ function Servicios() {
         <div style={{
           position: 'absolute', bottom: '-100px', right: '-100px',
           width: '500px', height: '500px', borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 65%)',
+          background: 'radial-gradient(circle, rgba(212,175,55,0.06) 0%, transparent 65%)',
           pointerEvents: 'none',
         }} />
 
         <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 2rem', position: 'relative', zIndex: 1 }}>
-          {/* Encabezado */}
           <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
             <span style={{
               fontFamily: '"Montserrat", sans-serif', fontWeight: 600,
@@ -307,7 +328,6 @@ function Servicios() {
             </p>
           </div>
 
-          {/* Grid */}
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
@@ -343,7 +363,7 @@ function Servicios() {
 
                 <div style={{ padding: '1.75rem', display: 'flex', flexDirection: 'column', flex: 1 }}>
                   <div style={{ marginBottom: '1.25rem' }}>
-                    <IconoServicio src={s.icono} titulo={s.titulo} size={54} dorado />
+                    <IconoServicio icono={s.icono} titulo={s.titulo} size={32} dorado={false} />
                   </div>
 
                   <h3 style={{
@@ -372,14 +392,6 @@ function Servicios() {
             ))}
           </div>
         </div>
-      </div>
-
-      {/* ── Ola inferior: transición suave hacia la siguiente sección (blanco) ── */}
-      <div style={{ lineHeight: 0, backgroundColor: '#FFFFFF' }}>
-        <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"
-          style={{ display: 'block', width: '100%', height: '80px', transform: 'scaleY(-1)' }}>
-          <path d="M0,0 C360,80 1080,0 1440,60 L1440,80 L0,80 Z" fill="#0d2f6b" />
-        </svg>
       </div>
 
       {seleccionado && <Modal servicio={seleccionado} onClose={() => setSeleccionado(null)} />}
