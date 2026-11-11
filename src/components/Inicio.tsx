@@ -1,12 +1,17 @@
 import { useState, useEffect, useRef } from 'react'
-import heroBg from '../assets/images/imageninicio.jpeg'
-import logoMarcaDeAgua from '../assets/images/LOGOTIPOLAWCORPDORADO.png' 
+import heroBg from '../assets/images/imageninicio.webp'
+import logoMarcaDeAgua from '../assets/images/LOGOTIPOLAWCORPDORADO.webp' 
 
 const PILARES = [
   { prefix: '+', target: 32, label: 'Amparos\nConstitucionales' },
   { prefix: '+', target: 20, label: 'Recursos\nAdministrativos' },
   { prefix: '',   target: 11, label: 'Años de\nExperiencia' },
 ]
+
+// ── CONFIGURACIÓN DE WHATSAPP (Centralizado) ──
+const WHATSAPP_NUMBER = '59171091917' 
+const WHATSAPP_MESSAGE = encodeURIComponent('Hola, me gustaría agendar una consulta gratuita.')
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`
 
 function useCounter(target: number, duration: number, start: boolean) {
   const [count, setCount] = useState(0)
@@ -154,7 +159,7 @@ function Inicio() {
         zIndex: 1,
       }} />
 
-      {/* CONTENEDOR PRINCIPAL: Ahora usa CSS Grid a través de clases para cambiar entre columnas y filas */}
+      {/* CONTENEDOR PRINCIPAL */}
       <div className="hero-container" style={{
         position: 'relative', 
         zIndex: 10,
@@ -207,7 +212,8 @@ function Inicio() {
               marginBottom: '3.5rem',
               ...anim(0.5),
             }}>
-              <a href="#contacto" style={{
+              {/* Actualizado a WhatsApp para consistencia de navegación */}
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" style={{
                 padding: '15px 34px', borderRadius: '6px',
                 backgroundColor: '#D4AF37', color: '#040e24',
                 fontFamily: '"Montserrat", sans-serif', fontWeight: 800,
@@ -265,17 +271,17 @@ function Inicio() {
             </div>
           </div>
 
-          {/* Columna Derecha: Contenedor del Logo adaptable */}
+          {/* Columna Derecha: Contenedor del Logo alineado arriba */}
           <div className="hero-logo-block" style={{
-            opacity: loaded ? 1 : 0, 
-            ...anim(0.4)
+            ...anim(0.4),
+            marginTop: '5px' /* Pequeño ajuste para calzar exactamente con el renglón de la H1 */
           }}>
             <img 
               src={logoMarcaDeAgua} 
               alt="LawCorp International Logo" 
               style={{ 
                 width: '100%',
-                maxHeight: '480px',
+                maxHeight: '460px',
                 objectFit: 'contain',
                 filter: 'brightness(1.15) drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.85)) drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.9))'
               }}
@@ -344,19 +350,18 @@ function Inicio() {
         background: 'linear-gradient(to bottom, transparent 0%, #F5F7FB 100%)',
       }} />
 
-      {/* ESTILOS CSS ADICIONALES PARA RESPONSIVIDAD DINÁMICA */}
       <style>{`
         @keyframes scrollLine {
           0%   { transform: translateY(-100%) }
           100% { transform: translateY(250%) }
         }
 
-        /* Estructura en Grid por defecto (Desktop) */
+        /* Estructura en Grid (Cambio clave: align-items start) */
         .hero-content-split {
           display: grid;
           grid-template-columns: 1.2fr 0.8fr;
           gap: 2rem;
-          align-items: center;
+          align-items: start; 
           margin-bottom: 1rem;
         }
 
@@ -372,11 +377,12 @@ function Inicio() {
           pointer-events: none;
         }
 
-        /* Tabletas y pantallas medianas (Evita colisiones) */
+        /* Tabletas y pantallas medianas */
         @media (max-width: 1024px) {
           .hero-content-split {
-            grid-template-columns: 1fr; /* Pasa a una sola columna */
+            grid-template-columns: 1fr;
             gap: 3rem;
+            align-items: center; /* En móviles queda mejor centrado abajo */
           }
           
           .hero-text-block {
@@ -386,7 +392,8 @@ function Inicio() {
 
           .hero-logo-block {
             max-width: 420px;
-            margin: 0 auto; /* Centra el logo abajo del texto */
+            margin: 0 auto;
+            margin-top: 0px;
           }
           
           #inicio {

@@ -17,7 +17,7 @@ const CONTACTOS: ContactoInfo[] = [
   },
   {
     label: 'Teléfonos',
-    lineas: ['71 091 917 — Yohana Montaño', '77 119 933 — Grecia Peñaranda'],
+    lineas: ['71091917 — Yohana Montaño', '77100902'],
     href: 'https://wa.me/59171091917',
   },
   {
@@ -501,7 +501,6 @@ function Contacto() {
                 Contáctenos por WhatsApp
               </a>
 
-              {/* Cards de info — TAG <a> FALTABA en cada card */}
               {CONTACTOS.map((c, i) => (
                 <a
                   key={i}

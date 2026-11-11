@@ -1,5 +1,5 @@
-import fundador1 from '../assets/images/YohanaMontana.jpg'
-import fundador2 from '../assets/images/Grecia.jpg'
+import fundador1 from '../assets/images/YohanaMontana.webp'
+// import fundador2 from '../assets/images/Grecia.jpg'
 
 interface Socio {
   nombre: string
@@ -16,13 +16,6 @@ const socios: Socio[] = [
     descripcion:
       'Abogada egresada de la Universidad Autónoma Gabriel René Moreno (UAGRM) en 2008, graduada con honores mediante titulación directa. Especialista en Derecho Financiero y Tributario. Con sólida trayectoria en instituciones públicas como el Instituto Boliviano de Metrología, el Ministerio Público y la Aduana Nacional. Desde 2021 ha liderado más de 32 Amparos Constitucionales, 15 procesos penales aduaneros y 20 recursos administrativos con resultados altamente satisfactorios.',
   },
-  {
-    nombre: 'Grecia Whitney Peñaranda Moreira',
-    cargo: 'Socio Fundador',
-    foto: fundador2,
-    descripcion:
-      'Abogada egresada de la Universidad San Francisco Xavier de Chuquisaca (USFXCH) en 2011, con 11 años de experiencia en la Aduana Nacional de Bolivia. Especialista en Derecho Aduanero, Tributario, Administrativo y Constitucional. Experta en Fiscalización Aduanera y Fraude Tributario. Reconocida por su excelencia en desempeño, criterio técnico, ética profesional y orientación a resultados.',
-  },
 ]
 
 function SocioRow({ socio, index, isLast }: { socio: Socio; index: number; isLast: boolean }) {
@@ -35,9 +28,9 @@ function SocioRow({ socio, index, isLast }: { socio: Socio; index: number; isLas
         style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '3.5rem',                  // ← antes 5rem
+          gap: '3.5rem',              
           flexDirection: isEven ? 'row' : 'row-reverse',
-          padding: '2.5rem 0',            // ← antes 3.5rem
+          padding: '2.5rem 0',           
         }}
       >
         {/* ── Foto ── */}
@@ -48,11 +41,11 @@ function SocioRow({ socio, index, isLast }: { socio: Socio; index: number; isLas
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            gap: '0.75rem',               // ← antes 1rem
-            width: '210px',               // ← antes 240px
+            gap: '0.75rem',               
+            width: '210px',               
           }}
         >
-          <div style={{ position: 'relative', width: '170px', height: '170px' }}> {/* ← antes 190px */}
+          <div style={{ position: 'relative', width: '170px', height: '170px' }}> 
             {/* Anillo exterior punteado */}
             <div style={{
               position: 'absolute', inset: '-10px',
@@ -137,16 +130,16 @@ function SocioRow({ socio, index, isLast }: { socio: Socio; index: number; isLas
           <span style={{
             display: 'block',
             fontFamily: '"Montserrat", sans-serif', fontWeight: 900,
-            fontSize: '60px', lineHeight: 1,       // ← antes 72px
+            fontSize: '60px', lineHeight: 1,       
             color: 'rgba(11,61,145,0.05)',
-            marginBottom: '-0.5rem',               // ← menos overlap
+            marginBottom: '-0.5rem',              
             letterSpacing: '-4px',
             userSelect: 'none',
           }}>0{index + 1}</span>
 
           <h3 style={{
             fontFamily: '"Montserrat", sans-serif', fontWeight: 800,
-            fontSize: 'clamp(1.1rem, 2vw, 1.35rem)', // ← ligeramente menor
+            fontSize: 'clamp(1.1rem, 2vw, 1.35rem)', 
             color: '#0B3D91', margin: '0 0 0.5rem', lineHeight: 1.2,
           }}>
             {socio.nombre}
@@ -155,12 +148,12 @@ function SocioRow({ socio, index, isLast }: { socio: Socio; index: number; isLas
           <div style={{
             width: '36px', height: '3px',
             background: 'linear-gradient(90deg, #D4AF37, rgba(212,175,55,0.2))',
-            borderRadius: '2px', marginBottom: '0.75rem', // ← antes 1rem
+            borderRadius: '2px', marginBottom: '0.75rem', 
           }} />
 
           <p style={{
             fontFamily: '"Open Sans", sans-serif', fontWeight: 400,
-            fontSize: '0.88rem', lineHeight: 1.75,  // ← antes 1.85
+            fontSize: '0.88rem', lineHeight: 1.75,  
             color: '#5C5C5C', margin: 0,
             maxWidth: '560px',
           }}>
@@ -176,14 +169,14 @@ function SocioRow({ socio, index, isLast }: { socio: Socio; index: number; isLas
           alignItems: 'center',
           gap: '1rem',
           padding: '0 1rem',
-          margin: '0.25rem 0',            // ← pequeño margen vertical
+          margin: '0.25rem 0',           
         }}>
           <div style={{
             flex: 1, height: '1px',
             background: 'linear-gradient(90deg, transparent, rgba(11,61,145,0.12) 20%, rgba(11,61,145,0.12) 80%, transparent)',
           }} />
           <div style={{
-            width: '24px', height: '24px', borderRadius: '50%', flexShrink: 0, // ← antes 28px
+            width: '24px', height: '24px', borderRadius: '50%', flexShrink: 0, 
             border: '1.5px solid rgba(212,175,55,0.35)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
           }}>
@@ -207,8 +200,8 @@ function QuienesSomos() {
     <section
       id="quienes-somos"
       style={{
-        paddingTop: '5rem',              // ← antes 7rem
-        paddingBottom: '3rem',           // ← antes 4rem
+        paddingTop: '5rem',              
+        paddingBottom: '3rem',          
         position: 'relative',
         overflow: 'hidden',
         background: `

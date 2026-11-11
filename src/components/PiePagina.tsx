@@ -1,5 +1,5 @@
 import React from 'react'
-import logoLawCorp from '../assets/images/LOGOTIPOLAWCORPDORADO.png'
+import logoLawCorp from '../assets/images/LOGOTIPOLAWCORPDORADO.webp'
 
 const WHATSAPP_URL =
   'https://wa.me/59171091917?text=Hola%2C%20me%20comunico%20desde%20la%20p%C3%A1gina%20web%20de%20LawCorp%20y%20quisiera%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios.'
@@ -266,7 +266,7 @@ function PiePagina() {
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12 19.79 19.79 0 0 1 1.07 3.4 2 2 0 0 1 3.05 1.21h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.09 8.91A16 16 0 0 0 13 14.85l1.06-1.06a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21 16.92z"/>
                 </svg>
                 <span style={{ fontFamily: '"Open Sans", sans-serif', fontSize: '0.85rem', color: 'rgba(255,255,255,0.45)', lineHeight: 1.6 }}>
-                  71 091 917<br />77 119 933
+                  71091917<br />77100902
                 </span>
               </div>
 
